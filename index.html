@@ -1,0 +1,337 @@
+```html
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApexSocial | Data-Driven Social Growth Agency</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Inter & Plus Jakarta Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f3ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            accent: '#a855f7',
+                            neon: '#06b6d4',
+                            magenta: '#ec4899',
+                            dark: '#0b0f19',
+                            card: '#111827',
+                            border: 'rgba(255, 255, 255, 0.08)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #07090e;
+            color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Styles */
+        .glass-card {
+            background: rgba(17, 24, 39, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card-hover:hover {
+            background: rgba(24, 32, 52, 0.8);
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.25);
+        }
+
+        .glass-nav {
+            background: rgba(7, 9, 14, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Gradient Glow Effects */
+        .gradient-text {
+            background: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-btn {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            transition: all 0.3s ease;
+        }
+
+        .gradient-btn:hover {
+            background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.5);
+        }
+
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.35;
+        }
+
+        /* Custom Slider Styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            height: 8px;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 22px;
+            width: 22px;
+            border-radius: 50%;
+            background: #6366f1;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.8);
+            border: 2px solid #ffffff;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #07090e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #374151;
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-100 selection:bg-brand-500 selection:text-white relative">
+
+    <!-- Background Decorative Glow Orbs -->
+    <div class="glow-orb w-[500px] h-[500px] bg-brand-500 top-0 -left-40"></div>
+    <div class="glow-orb w-[600px] h-[600px] bg-brand-accent top-[20%] -right-60"></div>
+    <div class="glow-orb w-[500px] h-[500px] bg-brand-neon top-[60%] left-10"></div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-500 via-brand-accent to-brand-neon p-0.5 shadow-lg group-hover:scale-105 transition-transform">
+                    <div class="w-full h-full bg-brand-dark rounded-[10px] flex items-center justify-center">
+                        <i class="fa-solid font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-brand-neon text-xl fa-bolt"></i>
+                    </div>
+                </div>
+                <span class="font-heading font-extrabold text-2xl tracking-tight text-white">APEX<span class="gradient-text">SOCIAL</span></span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+                <a href="#services" class="hover:text-white transition-colors">Services</a>
+                <a href="#calculator" class="hover:text-white transition-colors">ROAS Calculator</a>
+                <a href="#case-studies" class="hover:text-white transition-colors">Case Studies</a>
+                <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
+                <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+            </nav>
+
+            <!-- CTA Button & Mobile Menu Toggle -->
+            <div class="flex items-center gap-4">
+                <button onclick="openModal()" class="gradient-btn px-5 py-2.5 rounded-full text-sm font-semibold text-white shadow-lg flex items-center gap-2 hover:opacity-95">
+                    <span>Book Strategy Call</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </button>
+
+                <button id="mobileMenuBtn" class="md:hidden text-gray-300 hover:text-white text-2xl focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden glass-card border-t border-gray-800 px-6 py-6 flex flex-col gap-4 text-base font-medium">
+            <a href="#services" class="hover:text-brand-500 transition-colors" onclick="toggleMobileMenu()">Services</a>
+            <a href="#calculator" class="hover:text-brand-500 transition-colors" onclick="toggleMobileMenu()">ROAS Calculator</a>
+            <a href="#case-studies" class="hover:text-brand-500 transition-colors" onclick="toggleMobileMenu()">Case Studies</a>
+            <a href="#pricing" class="hover:text-brand-500 transition-colors" onclick="toggleMobileMenu()">Pricing</a>
+            <a href="#faq" class="hover:text-brand-500 transition-colors" onclick="toggleMobileMenu()">FAQ</a>
+        </div>
+    </header>
+
+    <main class="relative z-10 pt-24">
+        <!-- HERO SECTION -->
+        <section class="min-h-[88vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 relative pt-12 pb-20">
+            <div class="max-w-5xl mx-auto text-center">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-brand-500/30 text-xs sm:text-sm font-medium mb-8 animate-pulse-slow">
+                    <span class="flex h-2 w-2 rounded-full bg-emerald-400"></span>
+                    <span class="text-gray-300">Accepting 3 New High-Growth Clients for Q4</span>
+                </div>
+
+                <!-- Main Heading -->
+                <h1 class="font-heading text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1] mb-6">
+                    Scale Your Brand With <br class="hidden sm:inline"/>
+                    <span class="gradient-text">Data-Driven Social Growth</span>
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto font-normal leading-relaxed mb-10">
+                    We turn casual scrollers into loyal customers using high-converting paid ad campaigns, viral video creative, and ROI-focused social strategy.
+                </p>
+
+                <!-- Hero CTAs -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                    <button onclick="openModal()" class="w-full sm:w-auto gradient-btn px-8 py-4 rounded-full font-bold text-lg text-white shadow-xl shadow-brand-500/20 hover:scale-105 transition-transform flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <span>Claim Your Free Growth Audit</span>
+                    </button>
+                    <a href="#case-studies" class="w-full sm:w-auto px-8 py-4 rounded-full font-semibold text-gray-300 glass-card hover:bg-white/10 hover:text-white transition-all flex items-center justify-center gap-2 border border-gray-700">
+                        <span>View Verified Results</span>
+                        <i class="fa-solid fa-arrow-down text-sm"></i>
+                    </a>
+                </div>
+
+                <!-- Hero Dynamic Stats Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-8 border-t border-gray-800/80">
+                    <div class="glass-card p-5 rounded-2xl text-center">
+                        <p class="text-3xl sm:text-4xl font-extrabold text-white font-heading mb-1" id="stat1">$14.8M+</p>
+                        <p class="text-xs sm:text-sm text-gray-400 font-medium">Client Revenue Generated</p>
+                    </div>
+                    <div class="glass-card p-5 rounded-2xl text-center">
+                        <p class="text-3xl sm:text-4xl font-extrabold text-white font-heading mb-1" id="stat2">680M+</p>
+                        <p class="text-xs sm:text-sm text-gray-400 font-medium">Organic & Paid Views</p>
+                    </div>
+                    <div class="glass-card p-5 rounded-2xl text-center">
+                        <p class="text-3xl sm:text-4xl font-extrabold text-white font-heading mb-1" id="stat3">4.2x</p>
+                        <p class="text-xs sm:text-sm text-gray-400 font-medium">Average Campaign ROAS</p>
+                    </div>
+                    <div class="glass-card p-5 rounded-2xl text-center">
+                        <p class="text-3xl sm:text-4xl font-extrabold text-white font-heading mb-1" id="stat4">98%</p>
+                        <p class="text-xs sm:text-sm text-gray-400 font-medium">Client Retention Rate</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BRAND TRUST LOGOS -->
+        <section class="py-10 border-y border-gray-800/60 bg-black/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="text-center text-xs font-semibold uppercase tracking-widest text-gray-500 mb-8">Trusted by founders & marketing teams at scale</p>
+                <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all">
+                    <div class="flex items-center gap-2 font-heading font-bold text-xl text-gray-300"><i class="fa-solid fa-shop text-brand-500"></i> LUMINA</div>
+                    <div class="flex items-center gap-2 font-heading font-bold text-xl text-gray-300"><i class="fa-solid fa-gem text-brand-accent"></i> VELOX</div>
+                    <div class="flex items-center gap-2 font-heading font-bold text-xl text-gray-300"><i class="fa-solid fa-rocket text-brand-neon"></i> AURA HQ</div>
+                    <div class="flex items-center gap-2 font-heading font-bold text-xl text-gray-300"><i class="fa-solid fa-shirt text-brand-magenta"></i> MODA NYC</div>
+                    <div class="flex items-center gap-2 font-heading font-bold text-xl text-gray-300"><i class="fa-solid fa-bolt text-yellow-500"></i> HYPERFIT</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES SHOWCASE SECTION -->
+        <section id="services" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-brand-500 mb-3">Our Core Engine</h2>
+                <h3 class="font-heading text-3xl sm:text-5xl font-extrabold text-white mb-6">Designed to Conquer Every Stage of Your Funnel</h3>
+                <p class="text-gray-400 text-base sm:text-lg">We don't do vanity metrics. We construct end-to-end acquisition systems that turn attention into trackable revenue.</p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="glass-card glass-card-hover rounded-3xl p-8 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-brand-500 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h4 class="font-heading text-2xl font-bold text-white mb-3">Paid Advertising</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">Data-backed customer acquisition across Meta (FB/IG), TikTok, and Google Ads tailored for rapid scale.</p>
+                        <ul class="space-y-3 text-sm text-gray-300 mb-8">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-neon text-xs"></i> Custom Audience Funnels</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-neon text-xs"></i> Dynamic Creative Testing</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-neon text-xs"></i> ROAS & CPA Optimization</li>
+                        </ul>
+                    </div>
+                    <button onclick="openModal('Paid Ads')" class="w-full py-3 rounded-xl border border-brand-500/30 text-brand-500 font-semibold hover:bg-brand-500 hover:text-white transition-all text-sm flex items-center justify-center gap-2">
+                        <span>Explore Paid Ads</span>
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="glass-card glass-card-hover rounded-3xl p-8 flex flex-col justify-between group border-brand-accent/30 relative">
+                    <div class="absolute -top-4 right-6 bg-gradient-to-r from-brand-accent to-brand-magenta text-white text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded-full shadow-lg">High Demand</div>
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-brand-accent/10 border border-brand-accent/20 flex items-center justify-center text-brand-accent text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-video"></i>
+                        </div>
+                        <h4 class="font-heading text-2xl font-bold text-white mb-3">UGC & Video Production</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">High-converting short-form videos (Reels, TikToks, Shorts) designed to hook viewers in the first 3 seconds.</p>
+                        <ul class="space-y-3 text-sm text-gray-300 mb-8">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-neon text-xs"></i> Creator Sourcing & Scripting</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-neon text-xs"></i> Direct-Response Video Edits</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-neon text-xs"></i> Multi-Format Variations</li>
+                        </ul>
+                    </div>
+                    <button onclick="openModal('UGC & Content')" class="w-full py-3 rounded-xl border border-brand-accent/30 text-brand-accent font-semibold hover:bg-brand-accent hover:text-white transition-all text-sm flex items-center justify-center gap-2">
+                        <span>Explore Content</span>
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="glass-card glass-card-hover rounded-3xl p-8 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-brand-neon/10 border border-brand-neon/20 flex items-center justify-center text-brand-neon text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-people-group"></i>
+                        </div>
+                        <h4 class="font-heading text-2xl font-bold text-white mb-3">Influencer Marketing</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">Full-service influencer partnerships that build brand credibility and generate authentic engagement.</p>
+                        <ul class="space-y-3 text-sm text-gray-300 mb-8">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-neon text-xs"></i> Vetted Creator Outreach</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-neon text-xs"></i> Contract & Usage Rights</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-neon text-xs"></i> Whitelisting & Dark Posts</li>
+                        </ul>
+                    </div>
+                    <button onclick="openModal('Influencer Marketing')" class="w-full py-3 rounded-xl border border-brand-neon/30 text-brand-neon font-semibold hover:bg-brand-neon hover:text-white transition-all text-sm flex items-center justify-center gap-2">
+                        <span>Explore Influencers<
